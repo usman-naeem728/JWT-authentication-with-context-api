@@ -68,8 +68,13 @@ function App() {
     const getProfile = async () => {
 
       try {
-        let response = await axios.get(`${state.baseUrl}/api/v1/products`, {
-          withCredentials: true
+        let response = await axios.get(`${state.baseUrl}/profile`, {
+          withCredentials: true,
+          headers: {
+            'Cache-Control': 'no-cache',
+            'Pragma': 'no-cache',
+            'Expires': '0',
+          }
         })
 
         console.log("response: ", response);

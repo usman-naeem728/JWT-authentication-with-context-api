@@ -187,4 +187,4 @@ router.post("/api/v1/logout", (req, res) =>{
        res.send({message: "logout successfully"})
    });
 
-   export default router
+export default router
