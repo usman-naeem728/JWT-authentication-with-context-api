@@ -79,9 +79,9 @@ function App() {
 
         console.log("response: ", response);
 
-
         dispatch({
-          type: 'USER_LOGIN'
+          type: 'USER_LOGIN',
+          payload: response.data
         })
       } catch (error) {
 
@@ -168,7 +168,7 @@ function App() {
                   open={Boolean(anchorEl)}
                   onClose={handleClose}
                 >
-                  <MenuItem onClick={handleClose}>Profile</MenuItem>
+                  <MenuItem onClick={handleClose}>{state.user.firstName} {state.user.lastName}</MenuItem>
                   <MenuItem onClick={handleClose}>My account</MenuItem>
                   <MenuItem onClick={logoutHandler}>Logout</MenuItem>
                 </Menu>

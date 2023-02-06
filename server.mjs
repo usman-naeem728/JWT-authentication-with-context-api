@@ -32,10 +32,16 @@ const getUser = async (req, res) => {
 
 
   try {
-    const user = await userModel.findOne({ _id: _id }).exec()
+    const user = await userModel.findOne({ _id: _id },"email firstName lastName -id").exec()
     if (!user) {
       res.status(404).send({})
     } else {
+      res.set({
+        "Cache-Control": "no-store, no-cache, must-revalidate, proxy-revalidate",
+        "Pragma": "no-cache",
+        "Expires": "0",
+        "Surrogate-Control": "no-store"
+    });
       res.status(200).send(user)
       console.log("this is user",user)
     }
